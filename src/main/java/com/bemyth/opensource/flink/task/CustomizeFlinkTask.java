@@ -7,6 +7,7 @@ import com.bemyth.opensource.flink.processes.AddProcessFunction;
 import com.bemyth.opensource.flink.processes.DivProcessFunction;
 import com.bemyth.opensource.flink.processes.MulProcessFunction;
 import com.bemyth.opensource.flink.processes.SubProcessFunction;
+import com.bemyth.opensource.flink.sink.CustomizeSink;
 import com.bemyth.opensource.flink.source.CustomizeSource;
 import org.apache.flink.streaming.api.datastream.DataStream;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
@@ -22,6 +23,7 @@ public class CustomizeFlinkTask {
     public CustomizeFlinkTask(CustomizeDescriptionFile descriptionFile, CustomizeSource dataSource){
         this.descriptionFile = descriptionFile;
         this.dataSource = dataSource;
+        this.buildDAG();
     }
 
     public void run() throws Exception{
@@ -44,12 +46,7 @@ public class CustomizeFlinkTask {
                    dataStream = dataStream.process(new DivProcessFunction());break;
            }
        }
-       dataStream.addSink(new SinkFunction<CustomizeData>() {
-           @Override
-           public void invoke(CustomizeData value, Context context) throws Exception {
-               System.out.println(value.data);
-           }
-       });
+       dataStream.addSink(new CustomizeSink()).setParallelism(1);
        this.env = env;
     }
 

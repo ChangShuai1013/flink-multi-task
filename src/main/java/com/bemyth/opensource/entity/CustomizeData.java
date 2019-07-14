@@ -7,4 +7,13 @@ public class CustomizeData {
         this.data = data;
     }
 
+    public String toString(){
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Double d : data){
+            stringBuilder.append(d);
+            stringBuilder.append(",");
+        }
+        return stringBuilder.toString();
+    }
+
 }

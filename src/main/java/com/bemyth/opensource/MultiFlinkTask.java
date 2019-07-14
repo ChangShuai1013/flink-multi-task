@@ -41,10 +41,12 @@ public class MultiFlinkTask {
         Step step2 = new Step();
         step2.setInputs(1,2);
         step2.setOutputs(4);
+        step2.setOperater(Operater.SUB);
 
         Step step3 = new Step();
         step3.setInputs(3,4);
         step3.setOutputs(5);
+        step3.setOperater(Operater.MUL);
 
 
         CustomizeDescriptionFile descriptionFile = new CustomizeDescriptionFile();

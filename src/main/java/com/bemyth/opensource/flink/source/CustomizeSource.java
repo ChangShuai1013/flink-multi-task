@@ -6,10 +6,13 @@ import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.functions.source.RichSourceFunction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import scala.runtime.IntRef;
+
+import java.util.Random;
 
 /**
- * @param allLen  数据总长度.
- * @param metaLocs 原始数据位置.
+ * @allLen  数据总长度.
+ * @metaLocs 原始数据位置.
  *
  *@Example 一个符合要求的数据包如下所示，该数据包中实际数据为 a,b,c; 需要计算生成的数据为 T1, T2, T3
  *所以 allLen = 6, metalocs = {0,1,2}
@@ -17,15 +20,16 @@ import org.slf4j.LoggerFactory;
  *   a  b   c   T1  T2  T3
  */
 public class CustomizeSource extends RichSourceFunction<CustomizeData> {
-    private  Logger logger = LoggerFactory.getLogger("source logger");
+    //private  Logger logger = LoggerFactory.getLogger("source logger");
     private  Integer allLen;
     private  Integer[] metaLocs;
     @Override
     public void run(SourceContext<CustomizeData> ctx) throws Exception {
+        System.out.println("source run");
         while (true){
             Double[] data = new Double[this.allLen];
             for(Integer loc:this.metaLocs){
-                data[loc] = Math.random();
+                data[loc] = (double) (int) (Math.random()*100);
             }
             CustomizeData customizeData = new CustomizeData(data);
             ctx.collect(customizeData);
@@ -34,16 +38,15 @@ public class CustomizeSource extends RichSourceFunction<CustomizeData> {
     }
     @Override
     public void cancel() {
-        logger.warn("source canceled");
+        System.out.println("source canceled");
     }
     @Override
     public void open(Configuration parameters) throws Exception {
-        logger.warn("source opened");
-        //super.open(parameters);
+        System.out.println("source opened");
     }
     @Override
     public void close(){
-        logger.warn("source closed");
+        System.out.println("source closed");
     }
 
     public CustomizeSource(CustomizeDescriptionFile descriptionFile){
