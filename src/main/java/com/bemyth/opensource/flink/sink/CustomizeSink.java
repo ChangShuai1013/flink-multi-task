@@ -1,10 +1,10 @@
 package com.bemyth.opensource.flink.sink;
 
-import com.bemyth.opensource.entity.CustomizeData;
+import com.bemyth.opensource.entity.CalcData;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.functions.sink.RichSinkFunction;
 
-public class CustomizeSink  extends RichSinkFunction<CustomizeData>{
+public class CustomizeSink  extends RichSinkFunction<CalcData>{
     @Override
     public void open(Configuration parameters) throws Exception {
         System.out.println("sink open");
@@ -16,7 +16,7 @@ public class CustomizeSink  extends RichSinkFunction<CustomizeData>{
     }
 
     @Override
-    public void invoke(CustomizeData value, Context context) throws Exception {
+    public void invoke(CalcData value, Context context) throws Exception {
         System.out.println(value.toString());
     }
 }
