@@ -12,7 +12,7 @@ public class DIVOperator extends AbstractOperator {
     @Override
     public CalcData calc() {
         calcData.data[step.outputs[0]] = calcData.data[step.inputs[0]] / calcData.data[step.inputs[1]];
-        return null;
+        return calcData;
     }
 
     public DIVOperator(CalcData calcData, Step step){

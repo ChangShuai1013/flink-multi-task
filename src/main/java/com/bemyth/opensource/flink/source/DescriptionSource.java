@@ -1,8 +1,7 @@
 package com.bemyth.opensource.flink.source;
 
 import com.bemyth.opensource.entity.procedure.DescriptionFile;
-import com.bemyth.opensource.entity.procedure.Operater;
-import com.bemyth.opensource.entity.procedure.Step;
+import com.bemyth.opensource.flink.source.task.Task1;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.checkpoint.CheckpointedFunction;
 import org.apache.flink.streaming.api.functions.source.RichSourceFunction;
@@ -74,39 +73,7 @@ public class DescriptionSource extends RichSourceFunction<DescriptionFile> {
      */
     @Override
     public void run(SourceContext<DescriptionFile> ctx) throws Exception {
-        ctx.collect(this.createD1());
-    }
-
-    /*
-     (T2 + T1 * 3) / 2
-     0  1   2   3   4   5   6
-            3   2
-     T1 T2 C1   C2  P1  P2 P3
-     */
-    private DescriptionFile createD1() {
-        DescriptionFile d1 = new DescriptionFile();
-        d1.taskID = 1;
-        d1.method = "UPDATE";
-
-        Step step1 = new Step();
-        step1.setInputs(0,2);
-        step1.setOutputs(4);
-        step1.setOperater(Operater.MUL);
-
-        Step step2 = new Step();
-        step2.setInputs(1,4);
-        step2.setOutputs(5);
-        step1.setOperater(Operater.ADD);
-
-        Step step3 = new Step();
-        step3.setInputs(5,3);
-        step3.setOutputs(6);
-        step3.setOperater(Operater.DIV);
-
-
-        d1.setSteps(step1,step2,step3);
-
-        return d1;
+        ctx.collect(Task1.genDescription());
     }
 
     /**

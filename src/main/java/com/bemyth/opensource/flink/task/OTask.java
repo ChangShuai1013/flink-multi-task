@@ -38,7 +38,8 @@ public class OTask  {
         BroadcastStream<DescriptionFile> bcedDescriptions = descriptionFileDataStream.broadcast(mapStateDescriptor);
 
 
-        calcDataByTaskID.connect(bcedDescriptions).process(new CalcProcess()).name("CalcProcess")
+        calcDataByTaskID.connect(bcedDescriptions).
+                process(new CalcProcess()).name("CalcProcess").setParallelism(2)
                 .addSink(new CustomizeSink()).name("CustomizeSink").setParallelism(1);
     }
     public void run() throws Exception{

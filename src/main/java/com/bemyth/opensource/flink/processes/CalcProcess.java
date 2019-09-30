@@ -53,8 +53,10 @@ public class CalcProcess extends KeyedBroadcastProcessFunction<Integer,CalcData,
     @Override
     public void processElement(CalcData value, ReadOnlyContext ctx, Collector<CalcData> out) throws Exception {
         DescriptionFile descriptionFile = ctx.getBroadcastState(this.descriptor).get(value.taskID);
-        value = Executor.execute(value,descriptionFile);
-        out.collect(value);
+        if (descriptionFile != null){
+            value = Executor.execute(value,descriptionFile);
+            out.collect(value);
+        }
     }
 
     /**

@@ -17,13 +17,13 @@ public class Executor {
             AbstractOperator operator = null;
             switch (step.operater){
                 case ADD:
-                    operator = new ADDOperator(calcData,step);
+                    operator = new ADDOperator(calcData,step);break;
                 case SUB:
-                    operator = new SUBOperator(calcData,step);
+                    operator = new SUBOperator(calcData,step);break;
                 case MUL:
-                    operator = new MULOperator(calcData,step);
+                    operator = new MULOperator(calcData,step);break;
                 case DIV:
-                    operator = new DIVOperator(calcData,step);
+                    operator = new DIVOperator(calcData,step);break;
             }
             calcData = operator.calc();
         }

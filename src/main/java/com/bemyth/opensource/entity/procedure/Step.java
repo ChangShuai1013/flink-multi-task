@@ -1,7 +1,7 @@
 package com.bemyth.opensource.entity.procedure;
 
 
-public class Step {
+public class  Step {
     // 输入， 数据在数组中的编号
     public  Integer[] inputs;
 
