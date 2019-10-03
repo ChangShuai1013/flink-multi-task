@@ -1,7 +1,7 @@
-package com.bemyth.opensource.flink.source;
+package com.cs.flink.source;
 
-import com.bemyth.opensource.entity.procedure.DescriptionFile;
-import com.bemyth.opensource.flink.source.task.Task1;
+import com.cs.flink.entity.procedure.DescriptionFile;
+import com.cs.flink.source.task.Task1;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.checkpoint.CheckpointedFunction;
 import org.apache.flink.streaming.api.functions.source.RichSourceFunction;

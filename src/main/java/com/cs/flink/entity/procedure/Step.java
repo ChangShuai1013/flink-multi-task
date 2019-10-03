@@ -1,4 +1,4 @@
-package com.bemyth.opensource.entity.procedure;
+package com.cs.flink.entity.procedure;
 
 
 public class  Step {

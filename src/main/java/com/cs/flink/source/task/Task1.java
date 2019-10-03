@@ -1,9 +1,9 @@
-package com.bemyth.opensource.flink.source.task;
+package com.cs.flink.source.task;
 
-import com.bemyth.opensource.entity.CalcData;
-import com.bemyth.opensource.entity.procedure.DescriptionFile;
-import com.bemyth.opensource.entity.procedure.Operater;
-import com.bemyth.opensource.entity.procedure.Step;
+import com.cs.flink.entity.CalcData;
+import com.cs.flink.entity.procedure.DescriptionFile;
+import com.cs.flink.entity.procedure.Operater;
+import com.cs.flink.entity.procedure.Step;
 
 /**
  * @Auther dier

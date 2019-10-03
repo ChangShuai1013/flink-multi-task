@@ -1,6 +1,6 @@
-package com.bemyth.opensource.flink.sink;
+package com.cs.flink.sink;
 
-import com.bemyth.opensource.entity.CalcData;
+import com.cs.flink.entity.CalcData;
 import org.apache.flink.configuration.Configuration;
 import org.apache.flink.streaming.api.functions.sink.RichSinkFunction;
 

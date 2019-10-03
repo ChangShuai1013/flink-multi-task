@@ -1,4 +1,4 @@
-package com.bemyth.opensource.entity;
+package com.cs.flink.entity;
 
 public class CalcData {
     public Integer taskID;

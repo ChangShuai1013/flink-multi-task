@@ -1,4 +1,4 @@
-package com.bemyth.opensource.utils;
+package com.cs.flink.utils;
 
 public class Utils {
 
